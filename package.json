@@ -1,0 +1,58 @@
+{
+  "name": "cat-vuex-decorator",
+  "author": "Lin.xs",
+  "version": "0.1.0",
+  "license": "ISC",
+  "description": "vuex decorator",
+  "keywords": [
+    "vuex",
+    "vuex-decorator"
+  ],
+  "scripts": {
+    "build": "node build/index.js",
+    "tbuild": "node tbuild/build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "main": "dist/cat-vuex-decorator.common.js",
+  "module": "dist/cat-vuex-decorator.esm.js",
+  "unpkg": "cat-vuex-decorator.js",
+  "jsdelivr": "cat-vuex-decorator.js",
+  "typings1": "types/index.d.ts",
+  "files": [
+    "src/*.js",
+    "dist/*.js",
+    "types/*.d.ts"
+  ],
+  "homepage": "https://github.com/linxsbox/cat-vuex-decorator#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linxsbox/cat-vuex-decorator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/linxsbox/cat-vuex-decorator/issues"
+  },
+  "devDependencies": {
+    "@rollup/plugin-buble": "^0.21.1",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@rollup/plugin-replace": "^2.3.1",
+    "lint-staged": "^10.0.9",
+    "rollup": "^2.2.0",
+    "rollup-plugin-flow-no-whitespace": "^1.0.0",
+    "rollup-plugin-typescript2": "^0.26.0",
+    "terser": "^4.6.7",
+    "tslint": "^6.1.0",
+    "typescript": "^3.8.3",
+    "vue-class-component": "^7.2.3",
+    "vue": "^2.6.11",
+    "vuex": "^3.3.0"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "git add"
+    ]
+  }
+}
