@@ -1,20 +1,20 @@
 {
   "name": "cat-vuex-decorator",
   "author": "Lin.xs",
-  "version": "0.1.1",
-  "license": "ISC",
+  "version": "0.1.2",
+  "license": "MIT",
   "description": "vuex decorator",
   "keywords": [
     "vuex",
-    "vuex-decorator"
+    "vuex-decorator",
+    "vuex typescript"
   ],
   "scripts": {
-    "build": "node build/index.js",
-    "tbuild": "node tbuild/build.js",
+    "build": "node build/index.js && tsc -p ./src/tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "main": "dist/cat-vuex-decorator.esm.js",
-  "module": "dist/cat-vuex-decorator.common.js",
+  "main": "dist/cat-vuex-decorator.js",
+  "module": "dist/index.js",
   "unpkg": "cat-vuex-decorator.js",
   "jsdelivr": "cat-vuex-decorator.js",
   "typings": "types/index.d.ts",
@@ -43,9 +43,14 @@
     "terser": "^4.6.7",
     "tslint": "^6.1.0",
     "typescript": "^3.8.3",
-    "vue-class-component": "^7.2.3",
     "vue": "^2.6.11",
+    "vue-class-component": "^7.2.3",
     "vuex": "^3.3.0"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.0",
+    "vuex": "^3.0.0",
+    "vue-class-component": "^6.0.0 || ^7.0.0"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"

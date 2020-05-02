@@ -11,7 +11,7 @@ const version = packageInfo.version; // 版本号
 const license = packageInfo.license; // 开源协议
 
 const banner = // 版本信息 & 作者 & 开源协议
-`/*!
+`/**!
  * ${projectName} v${version}
  * Author: Lin.xs | Email: yunfax@outlook.com
  * (c) ${new Date().getFullYear()} Lin.xs
@@ -21,32 +21,32 @@ const banner = // 版本信息 & 作者 & 开源协议
 const resolve = _path => path.resolve(__dirname, '../', _path);
 
 const configs = [
-  { // dev
+  { // Universal Module Definition dev
     file: resolve(`dist/${projectName}.js`),
     format: 'umd',
     env: 'development'
   },
-  { // prd
+  { // Universal Module Definition prd
     file: resolve(`dist/${projectName}.min.js`),
     format: 'umd',
     env: 'production'
   },
-  { // commonjs dev
+  { // Commonjs Modules dev
     file: resolve(`dist/${projectName}.common.js`),
     format: 'cjs',
     env: 'development'
   },
-  { // commonjs prd
+  { // Commonjs Modules prd
     file: resolve(`dist/${projectName}.common.min.js`),
     format: 'cjs',
     env: 'production'
   },
-  { // es dev
+  { // ESM dev
     file: resolve(`dist/${projectName}.esm.js`),
     format: 'es',
     env: 'development'
   },
-  { // es prd
+  { // ESM prd
     file: resolve(`dist/${projectName}.esm.min.js`),
     format: 'es',
     env: 'production'
@@ -73,8 +73,8 @@ function buildConfig(item) {
     file: item.file,
     format: item.format,
     banner,
-    name: 'VuexDecorator',
-    indent: ' '
+    name: 'CatVuexDecorator',
+    indent: ' ',
   };
 
   if (item.env) {
@@ -85,7 +85,7 @@ function buildConfig(item) {
 
   return {
     input,
-    output
+    output,
   };
 }
 

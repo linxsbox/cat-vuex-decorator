@@ -1,14 +1,14 @@
-/*!
- * cat-vuex-decorator v0.1.0
+/**!
+ * cat-vuex-decorator v0.1.2
  * Author: Lin.xs | Email: yunfax@outlook.com
  * (c) 2020 Lin.xs
- * @license ISC
+ * @license MIT
  */
 (function (global, factory) {
- typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
- typeof define === 'function' && define.amd ? define(factory) :
- (global = global || self, global.VuexDecorator = factory());
-}(this, (function () { 'use strict';
+ typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+ typeof define === 'function' && define.amd ? define(['exports'], factory) :
+ (global = global || self, factory(global.CatVuexDecorator = {}));
+}(this, (function (exports) { 'use strict';
 
  /**
   * vuex v3.3.0
@@ -1148,18 +1148,11 @@
  var Getters = createBindingFnVuex(typeEnum.computed, mapGetters);
  var Commits = createBindingFnVuex(typeEnum.methods, mapMutations);
  var Actions = createBindingFnVuex(typeEnum.methods, mapActions);
- var _default = {
-     Getters: Getters,
-     Commits: Commits,
-     Actions: Actions,
- };
- // type params = string | string[] | { [key: string]: string };
- // export default class VuexDecorator {
- //   static Getters: (options: params, namespace?: string) => any;
- //   static Commits: (options: params, namespace?: string) => any;
- //   static Actions: (options: params, namespace?: string) => any;
- // }
 
- return _default;
+ exports.Actions = Actions;
+ exports.Commits = Commits;
+ exports.Getters = Getters;
+
+ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));

@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import { mapGetters, mapMutations, mapActions } from 'vuex';
 import { createDecorator } from 'vue-class-component';
 
@@ -85,21 +86,6 @@ function createBindingFnVuex (bindType: string, vMapFn: any) {
   };
 }
 
-const Getters = createBindingFnVuex(typeEnum.computed, mapGetters);
-const Commits = createBindingFnVuex(typeEnum.methods, mapMutations);
-const Actions = createBindingFnVuex(typeEnum.methods, mapActions);
-
-const _default = {
-  Getters,
-  Commits,
-  Actions,
-};
-
-export default _default ;
-
-// type params = string | string[] | { [key: string]: string };
-// export default class VuexDecorator {
-//   static Getters: (options: params, namespace?: string) => any;
-//   static Commits: (options: params, namespace?: string) => any;
-//   static Actions: (options: params, namespace?: string) => any;
-// }
+export const Getters = createBindingFnVuex(typeEnum.computed, mapGetters);
+export const Commits = createBindingFnVuex(typeEnum.methods, mapMutations);
+export const Actions = createBindingFnVuex(typeEnum.methods, mapActions);
