@@ -9,17 +9,17 @@ enum typeEnum {
 }
 
 // Parameter analysis of decorator.
-const fnKeysType = (fnKeys: string | string[] | {[key: string]: string}) => {
+const fnKeysType = (fnKeys: string | string[] | { [key: string]: string }) => {
   if (!fnKeys) {
     console.error('Decorator function expected 1-2 arguments, but got 0.');
     return false;
   }
 
-  if (typeof fnKeys === 'string') { return {data: [fnKeys], type: typeEnum.array}; }
+  if (typeof fnKeys === 'string') { return { data: [fnKeys], type: typeEnum.array }; }
 
-  else if (Array.isArray(fnKeys)) { return {data: fnKeys, type: typeEnum.array}; }
+  else if (Array.isArray(fnKeys)) { return { data: fnKeys, type: typeEnum.array }; }
 
-  else if (Object.keys(fnKeys).length > 0) { return {data: fnKeys, type: typeEnum.object}; }
+  else if (Object.keys(fnKeys).length > 0) { return { data: fnKeys, type: typeEnum.object }; }
 
   else { return false; }
 };
@@ -28,9 +28,9 @@ const fnKeysType = (fnKeys: string | string[] | {[key: string]: string}) => {
 function createBindingFnVuex (bindType: string, vMapFn: any) {
   // fnKeys = Vuex function key name
   // n = namespace
-  return function makeDecorator (fnKeys: string | string[] | {[key: string]: string}, n?: string) {
+  return function makeDecorator (fnKeys: string | string[] | { [key: string]: string }, n?: string) {
     const tempFnKeys = fnKeysType(fnKeys);
-    if (!tempFnKeys) { return createDecorator(_ => {/* null object */}); }
+    if (!tempFnKeys) { return createDecorator(_ => {/* null object */ }); }
 
     const paramData = tempFnKeys.data;
     const paramType = tempFnKeys.type;
@@ -59,7 +59,7 @@ function createBindingFnVuex (bindType: string, vMapFn: any) {
 
       // Handle the object data type.
       if (paramType === typeEnum.object) {
-        const tempObj = paramData as {[key: string]: string};
+        const tempObj = paramData as { [key: string]: string };
         for (const k in tempObj) {
           if (tempObj.hasOwnProperty(k)) {
             options[bindType][k] = bindMapFn[k];
@@ -70,10 +70,10 @@ function createBindingFnVuex (bindType: string, vMapFn: any) {
 
       // Non-single parameter processing.
       if (!singleBind) {
-        options[bindType][key] = () => { /** Init decorator binding function. */};
+        options[bindType][key] = () => { /** Init decorator binding function. */ };
         // Injection function callback processing.
         options[bindType][key] = function wrapperMethod () {
-          const bindThis: {[key: string]: any} = {};
+          const bindThis: { [key: string]: any } = {};
           mapObject.forEach((vkey, label) => {
             const tempKey = paramType === typeEnum.array ? vkey : label;
             bindThis[tempKey] = this[label];
@@ -85,8 +85,21 @@ function createBindingFnVuex (bindType: string, vMapFn: any) {
   };
 }
 
-export const Getters = createBindingFnVuex(typeEnum.computed, mapGetters);
+const Getters = createBindingFnVuex(typeEnum.computed, mapGetters);
+const Commits = createBindingFnVuex(typeEnum.methods, mapMutations);
+const Actions = createBindingFnVuex(typeEnum.methods, mapActions);
 
-export const Commits = createBindingFnVuex(typeEnum.methods, mapMutations);
+const _default = {
+  Getters,
+  Commits,
+  Actions,
+};
 
-export const Actions = createBindingFnVuex(typeEnum.methods, mapActions);
+export default _default ;
+
+// type params = string | string[] | { [key: string]: string };
+// export default class VuexDecorator {
+//   static Getters: (options: params, namespace?: string) => any;
+//   static Commits: (options: params, namespace?: string) => any;
+//   static Actions: (options: params, namespace?: string) => any;
+// }

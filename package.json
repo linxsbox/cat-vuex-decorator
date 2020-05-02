@@ -13,11 +13,11 @@
     "tbuild": "node tbuild/build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "main": "dist/cat-vuex-decorator.common.js",
-  "module": "dist/cat-vuex-decorator.esm.js",
+  "main": "dist/cat-vuex-decorator.esm.js",
+  "module": "dist/cat-vuex-decorator.common.js",
   "unpkg": "cat-vuex-decorator.js",
   "jsdelivr": "cat-vuex-decorator.js",
-  "typings1": "types/index.d.ts",
+  "typings": "types/index.d.ts",
   "files": [
     "src/*.js",
     "dist/*.js",

@@ -1,23 +1,11 @@
+import VueXDecorator from './vuex-decorator';
 
-type params = string | string[] | {[key: string]: string};
+export default VueXDecorator;
 
-/**
- * 
- * @param options string | string[] | {[key: string]: string}
- * @param namespace modules namespace
- */
-export declare function Getters(options: params, namespace?: string): any;
+export {
+  Getters,
+  Commits,
+  Actions
+} from './vuex-decorator';
 
-/**
- * 
- * @param options string | string[] | {[key: string]: string}
- * @param namespace modules namespace
- */
-export declare function Commits(options: params, namespace?: string): any;
-
-/**
- * 
- * @param options string | string[] | {[key: string]: string}
- * @param namespace modules namespace
- */
-export declare function Actions(options: params, namespace?: string): any;
+declare module 'cat-vuex-decorator';

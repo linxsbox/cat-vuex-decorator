@@ -1,5 +1,6 @@
 # vuex-decorator
 **cat-vuex-decorator** 是一个针对于使用 TypeScript 来编写 Vue 的 Vuex 封装实现。
+
 **在不改变 Vuex 定义和使用基础的情况下**，以装饰器模式来实现 Vuex 的使用。
 
 额外使用的 package

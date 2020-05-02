@@ -5,10 +5,10 @@
  * @license ISC
  */
 (function (global, factory) {
- typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
- typeof define === 'function' && define.amd ? define(['exports'], factory) :
- (global = global || self, factory(global.VuexDecorator = {}));
-}(this, (function (exports) { 'use strict';
+ typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+ typeof define === 'function' && define.amd ? define(factory) :
+ (global = global || self, global.VuexDecorator = factory());
+}(this, (function () { 'use strict';
 
  /**
   * vuex v3.3.0
@@ -1148,11 +1148,18 @@
  var Getters = createBindingFnVuex(typeEnum.computed, mapGetters);
  var Commits = createBindingFnVuex(typeEnum.methods, mapMutations);
  var Actions = createBindingFnVuex(typeEnum.methods, mapActions);
+ var _default = {
+     Getters: Getters,
+     Commits: Commits,
+     Actions: Actions,
+ };
+ // type params = string | string[] | { [key: string]: string };
+ // export default class VuexDecorator {
+ //   static Getters: (options: params, namespace?: string) => any;
+ //   static Commits: (options: params, namespace?: string) => any;
+ //   static Actions: (options: params, namespace?: string) => any;
+ // }
 
- exports.Actions = Actions;
- exports.Commits = Commits;
- exports.Getters = Getters;
-
- Object.defineProperty(exports, '__esModule', { value: true });
+ return _default;
 
 })));

@@ -6,8 +6,6 @@
  */
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
 /**
  * vuex v3.3.0
  * (c) 2020 Evan You
@@ -1146,7 +1144,16 @@ function createBindingFnVuex(bindType, vMapFn) {
 var Getters = createBindingFnVuex(typeEnum.computed, mapGetters);
 var Commits = createBindingFnVuex(typeEnum.methods, mapMutations);
 var Actions = createBindingFnVuex(typeEnum.methods, mapActions);
+var _default = {
+    Getters: Getters,
+    Commits: Commits,
+    Actions: Actions,
+};
+// type params = string | string[] | { [key: string]: string };
+// export default class VuexDecorator {
+//   static Getters: (options: params, namespace?: string) => any;
+//   static Commits: (options: params, namespace?: string) => any;
+//   static Actions: (options: params, namespace?: string) => any;
+// }
 
-exports.Actions = Actions;
-exports.Commits = Commits;
-exports.Getters = Getters;
+module.exports = _default;
