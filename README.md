@@ -47,7 +47,7 @@ createBindingFnVuex implements createDecorator { ... }
 
 // 参数类型定义
 type params: string | string[] | {[key: string]: string;
-type namespace? = string;
+type namespace?: string;
 // module: { namespace: true } 时使用，可空
 // 参考：https://vuex.vuejs.org/zh/guide/modules.html#带命名空间的绑定函数
 
