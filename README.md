@@ -12,7 +12,7 @@
 ## install
 
 ```bash
-npm i cat-vuex-decorator
+npm i -D cat-vuex-decorator
 ```
 
 **index.vue**
@@ -23,11 +23,14 @@ import { Getters, Commits, Actions } from 'cat-vuex-decorator';
 
 @Component
 export default class Test extends Vue {
+  @Getters('getter') g: any;
+  @Commits('mutations') c: any;
+  @Actions('action') a: any;
 
-  @Getters() g: any;
-  @Commits() c: any;
-  @Actions() a: any;
-
+  // 注意：如果使用 TSlint、ESLint 并且启用了 strictPropertyInitialization: true
+  // 为了保证能代码规范和顺利编译，那么请将装饰变量的定义类型新增 undefined
+  @Getters('getTitle') getTitle: string | undefined; // ✔
+  @Getters('getTitle') getTitle: string; // ❌
 }
 </script>
 ```
